@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body onload="openNav()">
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="file:///home/arun/flask/helloworld/templates/add_teachers.html">Add Teachers</a>
+ <a href="http://localhost:5000/add_teachers_view">Add Teachers</a>
+  <a href="http://localhost:5000/show_teachers">view Teachers</a>
+  <a href="http://localhost:5000/add_student">Add student</a>
+  <a href="http://localhost:5000/show_student">view Student</a>
+  <a href="http://localhost:5000/add_class_teacher">add class Teacher</a>
+  <a href="http://localhost:5000/show_class_teacher">view class Teacher</a>	
+  <a href="http://localhost:5000/make_attendance">make attendance</a>
+  <a href="http://localhost:5000/view_attendance">view attendance</a> 
+</div>
+
+<div class="container">
+
+	  <div class="row">
+    			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-9">
+					<h2>Student Deatails 2 </h2>
+			</div>
+			<div class="col-sm-1">
+				<a href="http://localhost:5000/log_out"> logout </a>
+			</div>
+	</div>
+
+
+  <div class="row">
+    <div class="col-sm-2">
+     
+    </div>
+    <div class="col-sm-10">
+	<h3>Enter student details</h3>
+     		
+		<form method = "post"   id="Form_Add_student">
+		
+		<div class="form-group">
+		    <label for="email" >select Class</label>
+				<select id="selectID" class="form-control" name="teachers">
+						<option> ----------- Select Class ----------------</option>	
+				{% for row in data %}
+			
+						<option value="{{ row[0] }}">{{ row[1] }}</option>
+				    	
+				{% endfor %}
+				</select>	
+		</div>	
+
+		<img src="../static/imag/ajax-loader.gif" height="30" width="30" id="loader" style="display:none">
+
+			<div class="alert alert-success" id="success-msg" style="display:none">
+  					<strong>Success!</strong> Indicates a successful or positive action.
+			</div>
+      
+		</form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+
+
+
+</script>
+
+
+<script src="../static/js/jquery.js"></script>
+
+<script src="../static/js/jquery.validate.js"></script>
+<script src="../static/js/additional-methods.js"></script>
+
+<script type="text/javascript">
+	
+	$('#selectID').change(function()
+	{
+
+		var id = $('#selectID').val();
+		//alert(id);
+		$(location).attr('href', 'get_student_details/'+id);
+		
+	});	
+
+</script>
+
+<script type="text/javascript">
+	
+$(document).ready(function()
+{
+		//alert("hiiiiiiiiii");
+});
+
+</script>
+     
+</body>
+</html> 
+

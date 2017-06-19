@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body onload="openNav()">
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="http://localhost:5000/add_teachers_view">Add Teachers</a>
+  <a href="http://localhost:5000/show_teachers">view Teachers</a>
+  <a href="http://localhost:5000/add_student">Add student</a>
+  <a href="http://localhost:5000/show_student">view Student</a>
+</div>
+
+<!--<h2>Teachers Deatails 2</h2>
+<p>Click on the element below to open the side navigation menu.</p>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>-->
+
+<div class="container">
+
+	  <div class="row">
+    			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-9">
+					<h2>Teachers Deatails 2 {{ name }}  </h2>
+			</div>
+			<div class="col-sm-1">
+				<a href="http://localhost:5000/log_out"> logout </a>
+			</div>
+	</div>
+
+			
+
+
+
+  <div class="row">
+    <div class="col-sm-2">
+     
+    </div>
+    <div class="col-sm-10">
+	<h3>Enter student details</h3>
+     		
+		<form action="http://localhost:5000/add_teachers" method = "post">
+		
+		<div class="form-group"   >
+		    <label for="email" >select calss</label>
+				<select class="form-control" name="class">
+						<option> ----------- Select class ----------------</option>	
+				{% for row in name %}
+			
+						<option value="{{ row[0] }}">{{ row[1] }}</option>
+				    	
+				{% endfor %}
+				</select>	
+		</div>	
+
+	
+		<div class="form-group"  >
+		    <label for="email">Name</label>
+		    <input type="text" class="form-control" name="name">
+		  </div>
+
+		 
+		  <div class="form-group">
+		    <label for="pwd">Password:</label>
+		    <input type="password" class="form-control" name="pwd">
+		  </div>
+		  <div class="checkbox">
+		    <label><input type="checkbox"> Remember me</label>
+		  </div>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+     
+</body>
+</html> 
+
